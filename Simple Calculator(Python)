@@ -1,0 +1,19 @@
+user_input = input("Enter the operation you want to perform: Enter 'add' for addition, 'subtract' for subtraction, 'multiply' for multiplication, 'divide' for division: ")
+if user_input == "add":
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+    print(f"The sum of {num1} and {num2} is {num1 + num2}")
+elif user_input == "subtract":
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+    print(f"The difference of {num1} and {num2} is {num1 - num2}")
+elif user_input == "multiply":
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+    print(f"The product of {num1} and {num2} is {num1 * num2}")
+elif user_input == "divide":
+    num1 = int(input("Enter the first number: "))
+    num2 = int(input("Enter the second number: "))
+    print(f"The division of {num1} and {num2} is {num1 / num2}")
+else:
+    print("Invalid input. Please enter a valid operation.")
