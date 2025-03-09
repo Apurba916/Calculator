@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <string.h>
+int name_length_counter(char name[]){
+    int length = 0;
+    for (int i = 0; name[i] != '\0'; i++)
+    {
+        length++;
+    }
+    return length;
+}
+
+int main(){
+    char name[100];
+    int size;
+    printf("How many words do your name have?:(for example: My name is Apurba Karmakar. This name has 2 words. If someone's name is Rakesh Kumar Sarkar, they have 3 words in their name.\n");
+    scanf("%d", &size);
+    getchar();
+    if (size == 1)
+    {   char name[100];
+        printf("Enter your name:\n");
+        fgets(name, 100, stdin);
+        int length = name_length_counter(name);
+        printf("Your name has %d characters.\n", length);
+    }
+    
+    else if (size == 2)
+    {   char name_1[100];
+        char name_2[100];
+        printf("Enter your first name:\n");
+        fgets(name_1, 100, stdin);
+        int length_1 = name_length_counter(name_1);
+        printf("Enter your last name:\n");
+        fgets(name_2, 100, stdin);
+        int length_2 = name_length_counter(name_2);
+        int length = length_1 + length_2;
+        printf("Your name has %d characters.\n", length);
+
+    }
+    else if (size == 3)
+    {   char name_1[100];
+        char name_2[100];
+        char name_3[100];
+        printf("Enter your first name:\n");
+        fgets(name_1, 100, stdin);
+        int length_1 = name_length_counter(name_1);
+        printf("Enter your middle name:\n");
+        fgets(name_2, 100, stdin);
+        int length_2 = name_length_counter(name_2);
+        printf("Enter your last name:\n");
+        fgets(name_3, 100, stdin);
+        int length_3 = name_length_counter(name_3);
+        int length = length_1 + length_2 + length_3;
+        printf("Your name has %d characters.\n", length);
+    }
+    else if (size == 4)
+    {   char name_1[100];
+        char name_2[100];
+        char name_3[100];
+        char name_4[100];
+        printf("Enter your first name:\n");
+        fgets(name_1, 100, stdin);
+        int length_1 = name_length_counter(name_1);
+        printf("Enter your first middle name:\n");
+        fgets(name_2, 100, stdin);
+        int length_2 = name_length_counter(name_2);
+        printf("Enter your second middle name:\n");
+        fgets(name_3, 100, stdin);
+        int length_3 = name_length_counter(name_3);
+        printf("Enter your last name:\n");
+        fgets(name_4, 100, stdin);
+        int length_4 = name_length_counter(name_4);
+        int length = length_1 + length_2 + length_3 + length_4;
+        printf("Your name has %d characters.\n", length);
+    }
+    else
+    {
+        printf("Sorry, this program can't handle more than 4 words in a name.\n");
+    }
+    
+    
+    return 0;
+}
