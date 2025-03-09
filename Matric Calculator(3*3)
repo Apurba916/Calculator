@@ -1,0 +1,289 @@
+#include <stdio.h>
+
+void transpose(int rows, int cols, int matrix[rows][cols]) {
+    printf("The transpose of the matrix is:\n");
+    for (int a = 0; a < cols; a++) {
+        for (int b = 0; a < rows; b++) {
+            printf("%d ", matrix[b][a]);
+        }
+        printf("\n");
+    }
+}
+
+int determinant2x2(int matrix[2][2]) {
+    return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+}
+
+void inverse2x2(int matrix[2][2]) {
+    int det = determinant2x2(matrix);
+    if (det != 0) {
+        printf("%d %d\n", matrix[1][1] / det, -matrix[0][1] / det);
+        printf("%d %d\n", -matrix[1][0] / det, matrix[0][0] / det);
+    } else {
+        printf("The matrix is not invertible.\n");
+    }
+}
+
+void matrix_addition(int rows, int cols, int matrix_1[rows][cols], int matrix_2[rows][cols]) {
+    printf("The sum of the matrices is:\n");
+    for (int a = 0; a < rows; a++) {
+        for (int b = 0; b < cols; b++) {
+            printf("%d ", matrix_1[a][b] + matrix_2[a][b]);
+        }
+        printf("\n");
+    }
+}
+
+void matrix_subtraction(int rows, int cols, int matrix_1[rows][cols], int matrix_2[rows][cols]) {
+    printf("The difference of the matrices is:\n");
+    for (int a = 0; a < rows; a++) {
+        for (int b = 0; b < cols; b++) {
+            printf("%d ", matrix_1[a][b] - matrix_2[a][b]);
+        }
+        printf("\n");
+    }
+}
+
+void matrix_multiplication(int rows, int cols, int matrix_1[rows][cols], int matrix_2[rows][cols]) {
+    printf("The product of the matrices is:\n");
+    for (int a = 0; a < rows; a++) {
+        for (int b = 0; b < cols; b++) {
+            printf("%d ", matrix_1[a][b] * matrix_2[a][b]);
+        }
+        printf("\n");
+    }
+}
+
+void matrix_division(int rows, int cols, int matrix_1[rows][cols], int matrix_2[rows][cols]) {
+    printf("The division of the matrices is:\n");
+    for (int a = 0; a < rows; a++) {
+        for (int b = 0; b < cols; b++) {
+            if (matrix_2[a][b] != 0) {
+                printf("%d ", matrix_1[a][b] / matrix_2[a][b]);
+            } else {
+                printf("Inf "); // Division by zero
+            }
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int n;
+    printf("How many matrix you want to perform calculations on?\n");
+    printf("This program can perform calculations up to 4 matrices.\n");
+    scanf("%d", &n);
+
+    if (n == 1) {
+        int i, j;
+        printf("Enter the number of rows and columns of the matrix:\n");
+        scanf("%d %d", &i, &j);
+        int matrix[i][j];
+        printf("Enter the elements of the matrix:\n");
+        for (int a = 0; a < i; a++) {
+            for (int b = 0; b < j; b++) {
+                scanf("%d", &matrix[a][b]);
+            }
+        }
+        char operation;
+        printf("Enter the operation you want to perform on the matrix:\n");
+        printf("Enter T for transpose, D for determinant, and I for inverse.\n");
+        scanf(" %c", &operation);
+        if (operation == 'T') {
+            transpose(i, j, matrix);
+        } else if (operation == 'D') {
+            if (i == 2 && j == 2) {
+                printf("The determinant of the matrix is: %d\n", determinant2x2(matrix));
+            } else {
+                printf("Sorry, this program can only calculate the determinant of a 2x2 matrix.\n");
+            }
+        } else if (operation == 'I') {
+            if (i == 2 && j == 2) {
+                inverse2x2(matrix);
+            } else {
+                printf("Sorry, this program can only calculate the inverse of a 2x2 matrix.\n");
+            }
+        } else {
+            printf("Invalid operation.\n");
+        }
+    } else if (n == 2) {
+        int i, j;
+        printf("Enter the number of rows and columns of the matrices:\n");
+        scanf("%d %d", &i, &j);
+        int matrix_1[i][j];
+        int matrix_2[i][j];
+        printf("Enter the elements of the first matrix:\n");
+        for (int a = 0; a < i; a++) {
+            for (int b = 0; b < j; b++) {
+                scanf("%d", &matrix_1[a][b]);
+            }
+        }
+        printf("Enter the elements of the second matrix:\n");
+        for (int a = 0; a < i; a++) {
+            for (int b = 0; b < j; b++) {
+                scanf("%d", &matrix_2[a][b]);
+            }
+        }
+        char operation;
+        printf("Enter the operation you want to perform on the matrices:\n");
+        printf("Enter + for addition, - for subtraction, * for multiplication, and / for division.\n");
+        scanf(" %c", &operation);
+        if (operation == '+') {
+            matrix_addition(i, j, matrix_1, matrix_2);
+        } else if (operation == '-') {
+            matrix_subtraction(i, j, matrix_1, matrix_2);
+        } else if (operation == '*') {
+            matrix_multiplication(i, j, matrix_1, matrix_2);
+        } else if (operation == '/') {
+            matrix_division(i, j, matrix_1, matrix_2);
+        } else {
+            printf("Invalid operation.\n");
+        }
+    } else if (n == 3) {
+        int i, j;
+        printf("Enter the number of rows and columns of the matrices:\n");
+        scanf("%d %d", &i, &j);
+        int matrix_1[i][j];
+        int matrix_2[i][j];
+        int matrix_3[i][j];
+        printf("Enter the elements of the first matrix:\n");
+        for (int a = 0; a < i; a++) {
+            for (int b = 0; b < j; b++) {
+                scanf("%d", &matrix_1[a][b]);
+            }
+        }
+        printf("Enter the elements of the second matrix:\n");
+        for (int a = 0; a < i; a++) {
+            for (int b = 0; b < j; b++) {
+                scanf("%d", &matrix_2[a][b]);
+            }
+        }
+        printf("Enter the elements of the third matrix:\n");
+        for (int a = 0; a < i; a++) {
+            for (int b = 0; b < j; b++) {
+                scanf("%d", &matrix_3[a][b]);
+            }
+        }
+        char operation;
+        printf("Enter the operation you want to perform on the matrices:\n");
+        printf("Enter + for addition, - for subtraction, * for multiplication, and / for division.\n");
+        scanf(" %c", &operation);
+        if (operation == '+') {
+            printf("The sum of the matrices is:\n");
+            for (int a = 0; a < i; a++) {
+                for (int b = 0; b < j; b++) {
+                    printf("%d ", matrix_1[a][b] + matrix_2[a][b] + matrix_3[a][b]);
+                }
+                printf("\n");
+            }
+        } else if (operation == '-') {
+            printf("The difference of the matrices is:\n");
+            for (int a = 0; a < i; a++) {
+                for (int b = 0; b < j; b++) {
+                    printf("%d ", matrix_1[a][b] - matrix_2[a][b] - matrix_3[a][b]);
+                }
+                printf("\n");
+            }
+        } else if (operation == '*') {
+            printf("The product of the matrices is:\n");
+            for (int a = 0; a < i; a++) {
+                for (int b = 0; b < j; b++) {
+                    printf("%d ", matrix_1[a][b] * matrix_2[a][b] * matrix_3[a][b]);
+                }
+                printf("\n");
+            }
+        } else if (operation == '/') {
+            printf("The division of the matrices is:\n");
+            for (int a = 0; a < i; a++) {
+                for (int b = 0; b < j; b++) {
+                    if (matrix_2[a][b] != 0 && matrix_3[a][b] != 0) {
+                        printf("%d ", matrix_1[a][b] / matrix_2[a][b] / matrix_3[a][b]);
+                    } else {
+                        printf("Inf "); // Division by zero
+                    }
+                }
+                printf("\n");
+            }
+        } else {
+            printf("Invalid operation.\n");
+        }
+    } else if (n == 4) {
+        int i, j;
+        printf("Enter the number of rows and columns of the matrices:\n");
+        scanf("%d %d", &i, &j);
+        int matrix_1[i][j];
+        int matrix_2[i][j];
+        int matrix_3[i][j];
+        int matrix_4[i][j];
+        printf("Enter the elements of the first matrix:\n");
+        for (int a = 0; a < i; a++) {
+            for (int b = 0; b < j; b++) {
+                scanf("%d", &matrix_1[a][b]);
+            }
+        }
+        printf("Enter the elements of the second matrix:\n");
+        for (int a = 0; a < i; a++) {
+            for (int b = 0; b < j; b++) {
+                scanf("%d", &matrix_2[a][b]);
+            }
+        }
+        printf("Enter the elements of the third matrix:\n");
+        for (int a = 0; a < i; a++) {
+            for (int b = 0; b < j; b++) {
+                scanf("%d", &matrix_3[a][b]);
+            }
+        }
+        printf("Enter the elements of the fourth matrix:\n");
+        for (int a = 0; a < i; a++) {
+            for (int b = 0; b < j; b++) {
+                scanf("%d", &matrix_4[a][b]);
+            }
+        }
+        char operation;
+        printf("Enter the operation you want to perform on the matrices:\n");
+        printf("Enter + for addition, - for subtraction, * for multiplication, and / for division.\n");
+        scanf(" %c", &operation);
+        if (operation == '+') {
+            printf("The sum of the matrices is:\n");
+            for (int a = 0; a < i; a++) {
+                for (int b = 0; b < j; b++) {
+                    printf("%d ", matrix_1[a][b] + matrix_2[a][b] + matrix_3[a][b] + matrix_4[a][b]);
+                }
+                printf("\n");
+            }
+        } else if (operation == '-') {
+            printf("The difference of the matrices is:\n");
+            for (int a = 0; a < i; a++) {
+                for (int b = 0; b < j; b++) {
+                    printf("%d ", matrix_1[a][b] - matrix_2[a][b] - matrix_3[a][b] - matrix_4[a][b]);
+                }
+                printf("\n");
+            }
+        } else if (operation == '*') {
+            printf("The product of the matrices is:\n");
+            for (int a = 0; a < i; a++) {
+                for (int b = 0; b < j; b++) {
+                    printf("%d ", matrix_1[a][b] * matrix_2[a][b] * matrix_3[a][b] * matrix_4[a][b]);
+                }
+                printf("\n");
+            }
+        } else if (operation == '/') {
+            printf("The division of the matrices is:\n");
+            for (int a = 0; a < i; a++) {
+                for (int b = 0; b < j; b++) {
+                    if (matrix_2[a][b] != 0 && matrix_3[a][b] != 0 && matrix_4[a][b] != 0) {
+                        printf("%d ", matrix_1[a][b] / matrix_2[a][b] / matrix_3[a][b] / matrix_4[a][b]);
+                    } else {
+                        printf("Inf "); // Division by zero
+                    }
+                }
+                printf("\n");
+            }
+        } else {
+            printf("Invalid operation.\n");
+        }
+    } else {
+        printf("This program can only handle up to 4 matrices.\n");
+    }
+    return 0;
+}
