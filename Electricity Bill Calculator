@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main(){
+    int unit;
+    printf("How much units have you used?:\n");
+    scanf("%d", &unit);
+    float sample_bill = 80;
+    if (unit <= 50)
+    {    
+        float total_bill = sample_bill + sample_bill*0.20;
+        printf("Your electricity bill is %f.", total_bill);
+    }
+    else if (unit >50 && unit <= 150)
+    {
+        int unit_1 = unit - 50;
+        float bill = sample_bill + (unit_1 * 0.75);
+        float total_bill = bill + bill*0.20;
+        printf("Your electricity bill is %f.", total_bill);
+    }
+    else if (unit > 150 && unit <= 250)
+    {
+        int unit_2 = unit - 150;
+        float bill = sample_bill + (100 * 0.75) + (unit_2 * 1.20);
+        float total_bill = bill + bill*0.20;
+        printf("Your electricity bill is %f.", total_bill);
+    }
+    else if (unit > 250)
+    {
+        int unit_3 = unit - 250;
+        float bill = sample_bill + (100 * 0.75) + (100 * 1.20) + (unit_3 * 1.50);
+        float total_bill = bill + bill*0.20;
+        printf("Your electricity bill is %f.", total_bill);
+    }
+    else
+    {
+        printf("Please enter a valid unit.");
+    }
+    
+    return 0;
+    
+}
