@@ -1,0 +1,10 @@
+#include <stdio.h>
+#include <math.h>
+int main(){
+    double n;
+    printf("Enter a number:\n");
+    scanf("%lf", &n);
+    double square = pow(n, 3);
+    printf("The cube of %lf is %lf.", n, square);
+    return 0;
+}
